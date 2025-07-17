@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion as Motion } from "framer-motion";
 import { Download, ExternalLink, Mail, Github, Linkedin } from "lucide-react";
 import ParticleBackground from "./ParticleBackground";
+import resume from '../assets/natnael-yonas-cv.pdf';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
@@ -92,16 +93,16 @@ const Hero = () => {
             <span>Contact Me</span>
           </button>
 
-          <button className="group bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-8 py-4 rounded-full font-semibold flex items-center space-x-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300">
+          {/* <button className="group bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-8 py-4 rounded-full font-semibold flex items-center space-x-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"> */}
             <a
-              href="/resume.pdf"
+              href={resume}
               download
               className="group bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-8 py-4 rounded-full font-semibold flex items-center space-x-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
             >
               <Download className="h-5 w-5" />
               <span>Download Resume</span>
             </a>
-          </button>
+          {/* </button> */}
         </Motion.div>
 
         <Motion.div
