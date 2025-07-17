@@ -1,66 +1,84 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink, Github, Filter, X } from 'lucide-react';
-import ProjectModal from './ProjectModal';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { ExternalLink, Github, Filter, X } from "lucide-react";
+import ProjectModal from "./ProjectModal";
+import lmsImg from '../assets/lms-demo.jpg';
+import hubbitImg from '../assets/Hubbit-demo.jpg';
+import pharmacyImg from '../assets/pharmacy-managemnt.jpg';
+
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [filteredProjects, setFilteredProjects] = useState([]);
-  const [selectedFilter, setSelectedFilter] = useState('All');
+  const [selectedFilter, setSelectedFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     // Load projects from localStorage or use default data
-    const savedProjects = localStorage.getItem('portfolio_projects');
+    const savedProjects = localStorage.getItem("portfolio_projects");
     const defaultProjects = [
       {
-        id: '1',
-        title: 'E-Commerce Platform',
-        description: 'A full-featured e-commerce platform built with React and Node.js',
-        longDescription: 'A comprehensive e-commerce solution featuring user authentication, product catalog, shopping cart, payment integration, and admin dashboard. Built with modern technologies and best practices.',
-        image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-        technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-        githubUrl: 'https://github.com',
-        liveUrl: 'https://example.com',
-        category: 'Full Stack'
+        id: "1",
+        title: "Learning Management System (LMS)",
+        description:
+          "A platform for managing online learning and course delivery.",
+        longDescription:
+          "A comprehensive LMS supporting user registration, course creation, assessments, and certificate generation. Admin and instructor dashboards included.",
+        image:
+          lmsImg,
+        technologies: ["React", "Node.js", "MongoDB", "JWT"],
+        githubUrl: "https://github.com/your-username/lms",
+        liveUrl: "https://your-lms-demo.com",
+        category: "Full Stack",
       },
       {
-        id: '2',
-        title: 'Task Management App',
-        description: 'A collaborative task management application with real-time updates',
-        longDescription: 'A modern task management application with drag-and-drop functionality, real-time collaboration, team management, and detailed analytics dashboard.',
-        image: 'https://images.pexels.com/photos/3184460/pexels-photo-3184460.jpeg?auto=compress&cs=tinysrgb&w=800',
-        technologies: ['React', 'JavaScript', 'Socket.io', 'PostgreSQL'],
-        githubUrl: 'https://github.com',
-        liveUrl: 'https://example.com',
-        category: 'Frontend'
+        id: "2",
+        title: "Hubbit E-Commerce",
+        description:
+          "A modern e-commerce platform for product listing and sales.",
+        longDescription:
+          "E-commerce system featuring shopping cart, user authentication, admin product management, and Stripe payment gateway.",
+        image:
+          hubbitImg,
+        technologies: ["Next.js", "Tailwind CSS", "MongoDB", "Stripe"],
+        githubUrl: "https://github.com/your-username/hubbit-ecommerce",
+        liveUrl: "https://your-hubbit-ecommerce-demo.com",
+        category: "Full Stack",
       },
       {
-        id: '3',
-        title: 'Weather Dashboard',
-        description: 'A beautiful weather dashboard with location-based forecasts',
-        longDescription: 'An intuitive weather dashboard providing detailed forecasts, historical data, and weather maps. Features geolocation support and customizable widgets.',
-        image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
-        technologies: ['Vue.js', 'Chart.js', 'Weather API'],
-        githubUrl: 'https://github.com',
-        liveUrl: 'https://example.com',
-        category: 'Frontend'
-      }
+        id: "3",
+        title: "Pharmacy Management System",
+        description: "A desktop-based pharmacy management solution.",
+        longDescription:
+          "Used for managing medicines, customers, invoices, and inventory tracking. Built for desktop with database integration.",
+        image:
+          pharmacyImg,
+        technologies: ["react", "Tailwindcss", "MongoDb","Express","js"],
+        githubUrl:
+          "https://github.com/your-username/pharmacy-management-system",
+        liveUrl: "#", // Use # or omit if not hosted
+        category: "Backend",
+        category: "Full Stack",
+      },
     ];
 
-    const projectsData = savedProjects ? JSON.parse(savedProjects) : defaultProjects;
+    const projectsData = savedProjects
+      ? JSON.parse(savedProjects)
+      : defaultProjects;
     setProjects(projectsData);
     setFilteredProjects(projectsData);
   }, []);
 
-  const filters = ['All', 'Frontend', 'Full Stack', 'Backend'];
+  const filters = ["All", "Frontend", "Full Stack", "Backend"];
 
   const filterProjects = (filter) => {
     setSelectedFilter(filter);
-    if (filter === 'All') {
+    if (filter === "All") {
       setFilteredProjects(projects);
     } else {
-      setFilteredProjects(projects.filter(project => project.category === filter));
+      setFilteredProjects(
+        projects.filter((project) => project.category === filter)
+      );
     }
   };
 
@@ -78,8 +96,8 @@ const Projects = () => {
             Featured Projects
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            A collection of projects that showcase my skills and passion for creating 
-            innovative solutions
+            A collection of projects that showcase my skills and passion for
+            creating innovative solutions
           </p>
         </motion.div>
 
@@ -97,8 +115,8 @@ const Projects = () => {
               onClick={() => filterProjects(filter)}
               className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center space-x-2 ${
                 selectedFilter === filter
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-600'
+                  ? "bg-blue-600 text-white shadow-lg"
+                  : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-600"
               }`}
             >
               <Filter className="h-4 w-4" />
@@ -127,7 +145,7 @@ const Projects = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              
+
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                   {project.title}
@@ -135,7 +153,7 @@ const Projects = () => {
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech) => (
                     <span
@@ -146,7 +164,7 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                
+
                 <div className="flex space-x-4">
                   <a
                     href={project.githubUrl}
