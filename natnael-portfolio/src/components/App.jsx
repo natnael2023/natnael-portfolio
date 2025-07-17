@@ -5,7 +5,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Admin from './pages/Admin';
-// import BlogPost from './pages/BlogPost';
+import BlogPost from './pages/BlogPost';
 import './index.css';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/admin" element={<Admin />} />
-            {/* <Route path="/blog/:slug" element={<BlogPost />} /> */}
+            <Route path="/blog/:slug" element={<BlogPost />} />
           </Routes>
           <Toaster 
             position="top-right"
